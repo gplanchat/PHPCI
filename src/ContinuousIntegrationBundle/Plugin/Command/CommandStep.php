@@ -1,18 +1,19 @@
 <?php
 
-namespace Kiboko\Bundle\ContinuousIntegrationBundle\Plugin;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Plugin\Command;
 
 use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildInterface;
 use Kiboko\Bundle\ContinuousIntegrationBundle\ExecutionContext\Command\Command;
 use Kiboko\Bundle\ContinuousIntegrationBundle\ExecutionContext\Command\CommandInterface;
 use Kiboko\Bundle\ContinuousIntegrationBundle\ExecutionContext\ExecutionContextInterface;
-use Kiboko\Bundle\ContinuousIntegrationBundle\Pipeline\StepInterface;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Pipeline\Pipeline;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Pipeline\Processor\ProcessorInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Process\Process;
 
-class CommandStep implements StepInterface, LoggerAwareInterface
+class CommandStep extends Pipeline implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
 

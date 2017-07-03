@@ -4,6 +4,7 @@ namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildInterface;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\ProjectGroupInterface;
 use Ramsey\Uuid\UuidInterface;
 
 class ProjectGroupRepository extends EntityRepository implements ProjectGroupRepositoryInterface
@@ -11,9 +12,9 @@ class ProjectGroupRepository extends EntityRepository implements ProjectGroupRep
     /**
      * @param UuidInterface $identifier
      *
-     * @return BuildInterface
+     * @return ProjectGroupInterface
      */
-    public function findOneById(UuidInterface $identifier): BuildInterface
+    public function findOneById(UuidInterface $identifier): ProjectGroupInterface
     {
         return $this->findOneBy(
             [
@@ -25,9 +26,9 @@ class ProjectGroupRepository extends EntityRepository implements ProjectGroupRep
     /**
      * @param UuidInterface $identifier
      *
-     * @return BuildInterface
+     * @return ProjectGroupInterface
      */
-    public function findOneByIdentifier(UuidInterface $identifier): BuildInterface
+    public function findOneByIdentifier(UuidInterface $identifier): ProjectGroupInterface
     {
         return $this->findOneBy(
             [

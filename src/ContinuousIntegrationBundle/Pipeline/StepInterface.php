@@ -5,7 +5,7 @@ namespace Kiboko\Bundle\ContinuousIntegrationBundle\Pipeline;
 use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildInterface;
 use Kiboko\Bundle\ContinuousIntegrationBundle\ExecutionContext\ExecutionContextInterface;
 
-interface StepInterface extends PipelineBuilderInterface
+interface StepInterface
 {
     /**
      * @param BuildInterface $build

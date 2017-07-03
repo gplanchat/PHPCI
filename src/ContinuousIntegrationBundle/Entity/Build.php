@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Repository\BuildRepository")
  * @ORM\Table(
  *     name="kiboko_build",
  *     uniqueConstraints={
@@ -36,14 +36,14 @@ class Build implements BuildInterface
     private $identifier;
 
     /**
-     * @ORM\OneToMany(targetEntity="Project", mappedBy="user", cascade={"persist", "remove", "merge"}, orphanRemoval=false)
+     * @ORM\OneToMany(targetEntity="Project", mappedBy="builds", cascade={"persist", "remove", "merge"}, orphanRemoval=false)
      *
      * @var ProjectInterface
      */
     private $project;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=32)
      *
      * @var string
      */
@@ -121,9 +121,9 @@ class Build implements BuildInterface
     /**
      * @param mixed $id
      *
-     * @return $this
+     * @return BuildInterface
      */
-    public function setId(int $id)
+    public function setId(int $id): BuildInterface
     {
         $this->id = $id;
 
