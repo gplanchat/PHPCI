@@ -1,0 +1,6 @@
+suites:
+    pipeline_suite:
+        namespace: Kiboko\Component\Pipeline
+        psr4_prefix: Kiboko\Component\Pipeline
+        spec_path: src/Pipeline
+        src_path: src/Pipeline

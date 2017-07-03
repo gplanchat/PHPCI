@@ -1,6 +1,6 @@
 <?php
 
-namespace Kiboko\Component\Pipeline\Pipeline;
+namespace Kiboko\Component\Pipeline;
 
 interface PipelineExecutionInterface
 {
