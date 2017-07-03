@@ -24,6 +24,7 @@
 
     "autoload": {
         "psr-4": {
+            "Kiboko\\Component\\Pipeline\\": "src/Pipeline",
             "PHPCI\\": "PHPCI"
         }
     },
@@ -51,7 +52,8 @@
         "pda/pheanstalk": "~3.1",
         "maknz/slack": "~1.7",
         "hipchat/hipchat-php": "~1.4",
-        "mremi/flowdock": "~1.0"
+        "mremi/flowdock": "~1.0",
+        "symfony/process": "^3.3"
     },
 
     "require-dev": {
