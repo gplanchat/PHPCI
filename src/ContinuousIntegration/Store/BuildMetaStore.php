@@ -11,7 +11,7 @@ namespace Kiboko\Component\ContinuousIntegration\Store;
 
 use Kiboko\Component\ContinuousIntegration\Store\Base\BuildMetaStoreBase;
 use b8\Database;
-use Kiboko\Component\ContinuousIntegration\Model\BuildMeta;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildMeta;
 
 /**
  * BuildMeta Store

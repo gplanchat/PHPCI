@@ -11,8 +11,8 @@ namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use Kiboko\Component\ContinuousIntegration;
 use Kiboko\Component\ContinuousIntegration\Builder;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
-use Kiboko\Component\ContinuousIntegration\Model\BuildError;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildError;
 
 /**
 * PHP Code Sniffer Plugin - Allows PHP Code Sniffer testing.
@@ -20,7 +20,7 @@ use Kiboko\Component\ContinuousIntegration\Model\BuildError;
 * @package      PHPCI
 * @subpackage   Plugins
 */
-class PhpCodeSniffer implements Kiboko\Component\ContinuousIntegration\Plugin, Kiboko\Component\ContinuousIntegration\ZeroConfigPlugin
+class PhpCodeSniffer implements ContinuousIntegration\Plugin, ContinuousIntegration\ZeroConfigPlugin
 {
     /**
      * @var \Kiboko\Component\ContinuousIntegration\Builder

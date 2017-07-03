@@ -10,7 +10,7 @@
 namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use Kiboko\Component\ContinuousIntegration\Builder;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
 * Wipe Plugin - Wipes a folder
@@ -21,12 +21,12 @@ use Kiboko\Component\ContinuousIntegration\Model\Build;
 class Wipe implements \Kiboko\Component\ContinuousIntegration\Plugin
 {
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Builder
+     * @var Builder
      */
     protected $phpci;
 
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Model\Build
+     * @var Build
      */
     protected $build;
 

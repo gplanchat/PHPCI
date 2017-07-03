@@ -4,9 +4,9 @@
  * User base model for table: user
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model\Base;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Base;
 
-use Kiboko\Component\ContinuousIntegration\Model;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity;
 
 /**
  * User Base Model

@@ -1,8 +1,8 @@
 <?php
 
 use Phinx\Migration\AbstractMigration;
-use Kiboko\Component\ContinuousIntegration\Model\BuildMeta;
-use Kiboko\Component\ContinuousIntegration\Model\BuildError;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildMeta;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildError;
 
 class ConvertErrors extends AbstractMigration
 {
@@ -27,7 +27,7 @@ class ConvertErrors extends AbstractMigration
             $data = $this->metaStore->getErrorsForUpgrade(100);
             $count = count($data);
 
-            /** @var \Kiboko\Component\ContinuousIntegration\Model\BuildMeta $meta */
+            /** @var \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildMeta $meta */
             foreach ($data as $meta) {
                 try {
                     switch ($meta->getMetaKey()) {

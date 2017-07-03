@@ -3,7 +3,7 @@ use Kiboko\Component\ContinuousIntegration\Helper\Lang;
 
 $linkTemplate = $build->getFileLinkTemplate();
 
-/** @var \Kiboko\Component\ContinuousIntegration\Model\BuildError $error */
+/** @var \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildError $error */
 foreach ($errors as $error):
 
     $link = str_replace('{FILE}', $error->getFile(), $linkTemplate);

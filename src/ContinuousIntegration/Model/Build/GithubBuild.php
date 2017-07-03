@@ -7,12 +7,12 @@
  * @link         https://www.phptesting.org/
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model\Build;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 use Kiboko\Component\ContinuousIntegration\Builder;
 use Kiboko\Component\ContinuousIntegration\Helper\Diff;
 use Kiboko\Component\ContinuousIntegration\Helper\Github;
-use Kiboko\Component\ContinuousIntegration\Model\Build\RemoteGitBuild;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build\RemoteGitBuild;
 
 /**
 * Github Build Model

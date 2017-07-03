@@ -9,7 +9,7 @@
 namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use Kiboko\Component\ContinuousIntegration\Builder;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
  * Slack Plugin

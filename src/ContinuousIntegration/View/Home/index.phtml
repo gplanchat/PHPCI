@@ -28,25 +28,25 @@
                     <?php
                     foreach ($builds as $build):
                         switch ($build->getStatus()) {
-                            case \Kiboko\Component\ContinuousIntegration\Model\Build::STATUS_NEW:
+                            case \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build::STATUS_NEW:
                                 $updated = $build->getCreated();
                                 $label = Lang::get('pending');
                                 $color = 'blue';
                                 break;
 
-                            case \Kiboko\Component\ContinuousIntegration\Model\Build::STATUS_RUNNING:
+                            case \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build::STATUS_RUNNING:
                                 $updated = $build->getStarted();
                                 $label = Lang::get('running');
                                 $color = 'yellow';
                                 break;
 
-                            case \Kiboko\Component\ContinuousIntegration\Model\Build::STATUS_SUCCESS:
+                            case \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build::STATUS_SUCCESS:
                                 $updated = $build->getFinished();
                                 $label = Lang::get('successful');
                                 $color = 'green';
                                 break;
 
-                            case \Kiboko\Component\ContinuousIntegration\Model\Build::STATUS_FAILED:
+                            case \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build::STATUS_FAILED:
                                 $updated = $build->getFinished();
                                 $label = Lang::get('failed');
                                 $color = 'red';

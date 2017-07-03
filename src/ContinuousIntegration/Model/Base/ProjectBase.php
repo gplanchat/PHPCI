@@ -4,9 +4,9 @@
  * Project base model for table: project
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model\Base;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Base;
 
-use Kiboko\Component\ContinuousIntegration\Model;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity;
 use b8\Store\Factory;
 
 /**
@@ -630,7 +630,7 @@ class ProjectBase extends Model
     public function setGroup($value)
     {
         // Is this an instance of ProjectGroup?
-        if ($value instanceof \Kiboko\Component\ContinuousIntegration\Model\ProjectGroup) {
+        if ($value instanceof Entity\ProjectGroup) {
             return $this->setGroupObject($value);
         }
 
@@ -646,9 +646,9 @@ class ProjectBase extends Model
     /**
     * Set Group - Accepts a ProjectGroup model.
     *
-    * @param $value \PHPCI\Model\ProjectGroup
+    * @param $value Entity\ProjectGroup
     */
-    public function setGroupObject(\Kiboko\Component\ContinuousIntegration\Model\ProjectGroup $value)
+    public function setGroupObject(Entity\ProjectGroup $value)
     {
         return $this->setGroupId($value->getId());
     }
@@ -657,8 +657,8 @@ class ProjectBase extends Model
      * Get Build models by ProjectId for this Project.
      *
      * @uses \Kiboko\Component\ContinuousIntegration\Store\BuildStore::getByProjectId()
-     * @uses \Kiboko\Component\ContinuousIntegration\Model\Build
-     * @return \Kiboko\Component\ContinuousIntegration\Model\Build[]
+     * @uses Entity\Build
+     * @return Entity\Build[]
      */
     public function getProjectBuilds()
     {
@@ -669,8 +669,8 @@ class ProjectBase extends Model
      * Get BuildMeta models by ProjectId for this Project.
      *
      * @uses \Kiboko\Component\ContinuousIntegration\Store\BuildMetaStore::getByProjectId()
-     * @uses \Kiboko\Component\ContinuousIntegration\Model\BuildMeta
-     * @return \Kiboko\Component\ContinuousIntegration\Model\BuildMeta[]
+     * @uses Entity\BuildMeta
+     * @return Entity\BuildMeta[]
      */
     public function getProjectBuildMetas()
     {

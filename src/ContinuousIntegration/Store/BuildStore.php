@@ -10,7 +10,7 @@
 namespace Kiboko\Component\ContinuousIntegration\Store;
 
 use b8\Database;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 use Kiboko\Component\ContinuousIntegration\Store\Base\BuildStoreBase;
 
 /**
@@ -47,7 +47,7 @@ class BuildStore extends BuildStoreBase
             $res = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
             $map = function ($item) {
-                return new \Kiboko\Component\ContinuousIntegration\Model\Build($item);
+                return new Build($item);
             };
             $rtn = array_map($map, $res);
 

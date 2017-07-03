@@ -11,7 +11,7 @@ namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use Kiboko\Component\ContinuousIntegration;
 use Kiboko\Component\ContinuousIntegration\Builder;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
 * PHP Docblock Checker Plugin - Checks your PHP files for appropriate uses of Docblocks
@@ -19,15 +19,15 @@ use Kiboko\Component\ContinuousIntegration\Model\Build;
 * @package      PHPCI
 * @subpackage   Plugins
 */
-class PhpDocblockChecker implements Kiboko\Component\ContinuousIntegration\Plugin, Kiboko\Component\ContinuousIntegration\ZeroConfigPlugin
+class PhpDocblockChecker implements ContinuousIntegration\Plugin, ContinuousIntegration\ZeroConfigPlugin
 {
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Builder
+     * @var Builder
      */
     protected $phpci;
 
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Model\Build
+     * @var Build
      */
     protected $build;
 
@@ -160,11 +160,11 @@ class PhpDocblockChecker implements Kiboko\Component\ContinuousIntegration\Plugi
     {
         foreach ($output as $error) {
             $message = 'Class ' . $error['class'] . ' is missing a docblock.';
-            $severity = Kiboko\Component\ContinuousIntegration\Model\BuildError::SEVERITY_LOW;
+            $severity = Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildError::SEVERITY_LOW;
 
             if ($error['type'] == 'method') {
                 $message = $error['class'] . '::' . $error['method'] . ' is missing a docblock.';
-                $severity = Kiboko\Component\ContinuousIntegration\Model\BuildError::SEVERITY_NORMAL;
+                $severity = Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildError::SEVERITY_NORMAL;
             }
 
             $this->build->reportError(

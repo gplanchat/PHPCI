@@ -7,9 +7,9 @@
  * @link         https://www.phptesting.org/
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity;
 
-use Kiboko\Component\ContinuousIntegration\Model\Base\BuildMetaBase;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Base\BuildMetaBase;
 
 /**
  * BuildMeta Model

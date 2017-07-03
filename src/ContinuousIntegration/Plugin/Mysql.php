@@ -12,7 +12,7 @@ namespace Kiboko\Component\ContinuousIntegration\Plugin;
 use PDO;
 use Kiboko\Component\ContinuousIntegration\Builder;
 use Kiboko\Component\ContinuousIntegration\Helper\Lang;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
 * MySQL Plugin - Provides access to a MySQL database.
@@ -24,12 +24,12 @@ use Kiboko\Component\ContinuousIntegration\Model\Build;
 class Mysql implements \Kiboko\Component\ContinuousIntegration\Plugin
 {
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Builder
+     * @var Builder
      */
     protected $phpci;
 
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Model\Build
+     * @var Build
      */
     protected $build;
 

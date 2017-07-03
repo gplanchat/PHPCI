@@ -13,7 +13,7 @@ use Kiboko\Component\ContinuousIntegration\Helper\BuildInterpolator;
 use Kiboko\Component\ContinuousIntegration\Helper\Lang;
 use Kiboko\Component\ContinuousIntegration\Helper\MailerFactory;
 use Kiboko\Component\ContinuousIntegration\Logging\BuildLogger;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 use b8\Config;
 use b8\Store\Factory;
 use Psr\Log\LoggerAwareInterface;
@@ -53,7 +53,7 @@ class Builder implements LoggerAwareInterface
     protected $verbose = true;
 
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Model\Build
+     * @var \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build
      */
     protected $build;
 
@@ -104,7 +104,7 @@ class Builder implements LoggerAwareInterface
 
     /**
      * Set up the builder.
-     * @param \Kiboko\Component\ContinuousIntegration\Model\Build $build
+     * @param \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build $build
      * @param LoggerInterface $logger
      */
     public function __construct(Build $build, LoggerInterface $logger = null)

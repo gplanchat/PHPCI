@@ -11,7 +11,7 @@ namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use Kiboko\Component\ContinuousIntegration;
 use Kiboko\Component\ContinuousIntegration\Builder;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
 * PHP Spec Plugin - Allows PHP Spec testing.
@@ -27,7 +27,7 @@ class PhpSpec implements Kiboko\Component\ContinuousIntegration\Plugin
     protected $phpci;
 
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Model\Build
+     * @var \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build
      */
     protected $build;
 

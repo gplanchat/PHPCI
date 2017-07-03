@@ -10,7 +10,7 @@
 namespace Kiboko\Component\ContinuousIntegration;
 
 use b8\Store\Factory;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
 * Kiboko CI Build Factory - Takes in a generic "Build" and returns a type-specific build model.

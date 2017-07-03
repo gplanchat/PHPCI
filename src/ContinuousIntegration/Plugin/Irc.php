@@ -11,7 +11,7 @@ namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use Kiboko\Component\ContinuousIntegration\Builder;
 use Kiboko\Component\ContinuousIntegration\Helper\Lang;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
  * IRC Plugin - Sends a notification to an IRC channel

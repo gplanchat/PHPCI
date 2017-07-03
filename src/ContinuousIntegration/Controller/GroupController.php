@@ -13,7 +13,7 @@ use b8;
 use b8\Form;
 use b8\Store;
 use Kiboko\Component\ContinuousIntegration\Controller;
-use Kiboko\Component\ContinuousIntegration\Model\ProjectGroup;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\ProjectGroup;
 
 /**
  * Project Controller - Allows users to create, edit and view projects.

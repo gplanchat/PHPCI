@@ -102,7 +102,7 @@ class ProjectController extends ContinuousIntegration\Controller
     */
     public function build($projectId, $branch = '')
     {
-        /* @var \Kiboko\Component\ContinuousIntegration\Model\Project $project */
+        /* @var \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Project $project */
         $project = $this->projectStore->getById($projectId);
 
         if (empty($branch)) {

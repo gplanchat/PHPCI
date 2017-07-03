@@ -13,7 +13,7 @@ use b8;
 use b8\Store;
 use Exception;
 use Kiboko\Component\ContinuousIntegration\BuildFactory;
-use Kiboko\Component\ContinuousIntegration\Model\Project;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Project;
 use Kiboko\Component\ContinuousIntegration\Service\BuildService;
 use Kiboko\Component\ContinuousIntegration\Store\BuildStore;
 use Kiboko\Component\ContinuousIntegration\Store\ProjectStore;

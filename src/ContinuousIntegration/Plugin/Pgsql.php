@@ -11,7 +11,7 @@ namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use PDO;
 use Kiboko\Component\ContinuousIntegration\Builder;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
 * PgSQL Plugin - Provides access to a PgSQL database.
@@ -27,7 +27,7 @@ class Pgsql implements \Kiboko\Component\ContinuousIntegration\Plugin
     protected $phpci;
 
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Model\Build
+     * @var \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build
      */
     protected $build;
 

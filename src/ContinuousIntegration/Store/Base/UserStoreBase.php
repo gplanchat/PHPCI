@@ -9,7 +9,7 @@ namespace Kiboko\Component\ContinuousIntegration\Store\Base;
 use b8\Database;
 use b8\Exception\HttpException;
 use Kiboko\Component\ContinuousIntegration\Store;
-use Kiboko\Component\ContinuousIntegration\Model\User;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\User;
 
 /**
  * User Base Store

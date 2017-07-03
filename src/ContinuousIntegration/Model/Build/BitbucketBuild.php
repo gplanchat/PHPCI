@@ -7,10 +7,10 @@
  * @link         https://www.phptesting.org/
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model\Build;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
-use Kiboko\Component\ContinuousIntegration\Model\Build;
-use Kiboko\Component\ContinuousIntegration\Model\Build\RemoteGitBuild;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build\RemoteGitBuild;
 
 /**
 * BitBucket Build Model

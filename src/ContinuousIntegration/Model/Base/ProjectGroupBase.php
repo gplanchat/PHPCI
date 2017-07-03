@@ -4,9 +4,9 @@
  * ProjectGroup base model for table: project_group
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model\Base;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Base;
 
-use Kiboko\Component\ContinuousIntegration\Model;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity;
 use b8\Store\Factory;
 
 /**
@@ -158,8 +158,8 @@ class ProjectGroupBase extends Model
      * Get Project models by GroupId for this ProjectGroup.
      *
      * @uses \Kiboko\Component\ContinuousIntegration\Store\ProjectStore::getByGroupId()
-     * @uses \Kiboko\Component\ContinuousIntegration\Model\Project
-     * @return \Kiboko\Component\ContinuousIntegration\Model\Project[]
+     * @uses \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Project
+     * @return \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Project[]
      */
     public function getGroupProjects()
     {

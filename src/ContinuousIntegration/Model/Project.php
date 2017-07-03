@@ -7,10 +7,10 @@
  * @link         https://www.phptesting.org/
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity;
 
-use Kiboko\Component\ContinuousIntegration\Model\Base\ProjectBase;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Base\ProjectBase;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 use b8\Store;
 
 /**

@@ -9,11 +9,10 @@
 
 namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
-use Kiboko\Component\ContinuousIntegration\Plugin;
-use Kiboko\Component\ContinuousIntegration\ZeroConfigPlugin;
+use Kiboko\Component\ContinuousIntegration;
 use Kiboko\Component\ContinuousIntegration\Builder;
 use Kiboko\Component\ContinuousIntegration\Helper\Lang;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 use Kiboko\Component\ContinuousIntegration\Plugin\Util\TestResultParsers\Codeception as Parser;
 use Psr\Log\LogLevel;
 
@@ -25,7 +24,7 @@ use Psr\Log\LogLevel;
  * @package      PHPCI
  * @subpackage   Plugins
  */
-class Codeception implements Plugin, ZeroConfigPlugin
+class Codeception implements ContinuousIntegration\Plugin, ContinuousIntegration\ZeroConfigPlugin
 {
     /** @var string */
     protected $args = '';

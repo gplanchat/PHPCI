@@ -10,10 +10,10 @@ class AddProjectGroups extends AbstractMigration
         $table->addColumn('title', 'string', array('limit' => 100, 'null' => false));
         $table->save();
 
-        $group = new \Kiboko\Component\ContinuousIntegration\Model\ProjectGroup();
+        $group = new \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\ProjectGroup();
         $group->setTitle('Projects');
 
-        /** @var \Kiboko\Component\ContinuousIntegration\Model\ProjectGroup $group */
+        /** @var \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\ProjectGroup $group */
         $group = \b8\Store\Factory::getStore('ProjectGroup')->save($group);
 
         $table = $this->table('project');

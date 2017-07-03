@@ -11,7 +11,7 @@ namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use Kiboko\Component\ContinuousIntegration;
 use Kiboko\Component\ContinuousIntegration\Builder;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 use Kiboko\Component\ContinuousIntegration\Helper\Lang;
 
 /**
@@ -20,7 +20,7 @@ use Kiboko\Component\ContinuousIntegration\Helper\Lang;
 * @package      PHPCI
 * @subpackage   Plugins
 */
-class Composer implements Kiboko\Component\ContinuousIntegration\Plugin, Kiboko\Component\ContinuousIntegration\ZeroConfigPlugin
+class Composer implements ContinuousIntegration\Plugin, ContinuousIntegration\ZeroConfigPlugin
 {
     protected $directory;
     protected $action;

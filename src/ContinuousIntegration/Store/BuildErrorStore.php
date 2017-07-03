@@ -7,7 +7,7 @@
 namespace Kiboko\Component\ContinuousIntegration\Store;
 
 use b8\Database;
-use Kiboko\Component\ContinuousIntegration\Model\BuildError;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildError;
 use Kiboko\Component\ContinuousIntegration\Store\Base\BuildErrorStoreBase;
 
 /**

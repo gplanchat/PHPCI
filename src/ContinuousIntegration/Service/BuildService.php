@@ -14,8 +14,8 @@ use Pheanstalk\Pheanstalk;
 use Pheanstalk\PheanstalkInterface;
 use Kiboko\Component\ContinuousIntegration\BuildFactory;
 use Kiboko\Component\ContinuousIntegration\Helper\Lang;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
-use Kiboko\Component\ContinuousIntegration\Model\Project;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Project;
 use Kiboko\Component\ContinuousIntegration\Store\BuildStore;
 
 /**

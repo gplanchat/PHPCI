@@ -11,7 +11,7 @@ namespace Kiboko\Component\ContinuousIntegration\Logging;
 
 use b8\Store\Factory;
 use Monolog\Handler\AbstractProcessingHandler;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 use Psr\Log\LogLevel;
 
 /**

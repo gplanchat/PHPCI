@@ -9,7 +9,7 @@
 
 namespace Kiboko\Component\ContinuousIntegration;
 
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
  * Kiboko CI Plugin Interface - Used by all build plugins.

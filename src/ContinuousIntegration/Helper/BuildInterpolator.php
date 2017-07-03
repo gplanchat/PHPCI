@@ -9,7 +9,7 @@
 
 namespace Kiboko\Component\ContinuousIntegration\Helper;
 
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
  * The BuildInterpolator class replaces variables in a string with build-specific information.

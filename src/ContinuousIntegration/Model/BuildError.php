@@ -4,13 +4,13 @@
  * BuildError model for table: build_error
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity;
 
-use Kiboko\Component\ContinuousIntegration\Model\Base\BuildErrorBase;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Base\BuildErrorBase;
 
 /**
  * BuildError Model
- * @uses PHPCI\Model\Base\BuildErrorBase
+ * @uses BuildErrorBase
  */
 class BuildError extends BuildErrorBase
 {

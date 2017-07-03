@@ -4,9 +4,9 @@
  * BuildError base model for table: build_error
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model\Base;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Base;
 
-use Kiboko\Component\ContinuousIntegration\Model;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity;
 use b8\Store\Factory;
 
 /**
@@ -478,7 +478,7 @@ class BuildErrorBase extends Model
     public function setBuild($value)
     {
         // Is this an instance of Build?
-        if ($value instanceof \Kiboko\Component\ContinuousIntegration\Model\Build) {
+        if ($value instanceof Entity\Build) {
             return $this->setBuildObject($value);
         }
 
@@ -494,9 +494,9 @@ class BuildErrorBase extends Model
     /**
     * Set Build - Accepts a Build model.
     *
-    * @param $value \PHPCI\Model\Build
+    * @param $value Entity\Build
     */
-    public function setBuildObject(\Kiboko\Component\ContinuousIntegration\Model\Build $value)
+    public function setBuildObject(Entity\Build $value)
     {
         return $this->setBuildId($value->getId());
     }

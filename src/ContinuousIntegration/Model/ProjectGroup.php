@@ -4,9 +4,9 @@
  * ProjectGroup model for table: project_group
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity;
 
-use Kiboko\Component\ContinuousIntegration\Model\Base\ProjectGroupBase;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Base\ProjectGroupBase;
 
 /**
  * ProjectGroup Model

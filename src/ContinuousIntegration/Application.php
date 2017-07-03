@@ -14,6 +14,9 @@ use b8\Exception\HttpException;
 use b8\Http\Response;
 use b8\Http\Response\RedirectResponse;
 use b8\View;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Repository\ProjectGroupRepositoryInterface;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Repository\ProjectRepositoryInterface;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Repository\UserRepositoryInterface;
 
 /**
 * Kiboko CI Front Controller
@@ -22,9 +25,41 @@ use b8\View;
 class Application extends b8\Application
 {
     /**
+     * @var UserRepositoryInterface
+     */
+    private $userRepository;
+
+    /**
+     * @var ProjectRepositoryInterface
+     */
+    private $projectRepository;
+
+    /**
+     * @var ProjectGroupRepositoryInterface
+     */
+    private $projectGroupRepository;
+
+    /**
      * @var Controller
      */
     protected $controller;
+
+    /**
+     * Application constructor.
+     *
+     * @param UserRepositoryInterface $userRepository
+     * @param ProjectRepositoryInterface $projectRepository
+     * @param ProjectGroupRepositoryInterface $projectGroupRepository
+     */
+    public function __construct(
+        UserRepositoryInterface $userRepository,
+        ProjectRepositoryInterface $projectRepository,
+        ProjectGroupRepositoryInterface $projectGroupRepository
+    ) {
+        $this->userRepository = $userRepository;
+        $this->projectRepository = $projectRepository;
+        $this->projectGroupRepository = $projectGroupRepository;
+    }
 
     /**
      * Initialise Kiboko CI - Handles session verification, routing, etc.
@@ -136,12 +171,12 @@ class Application extends b8\Application
     protected function setLayoutVariables(View &$layout)
     {
         $groups = array();
-        $groupStore = b8\Store\Factory::getStore('ProjectGroup');
+        $groupStore = $this->projectGroupRepository->findAll();
         $groupList = $groupStore->getWhere(array(), 100, 0, array(), array('title' => 'ASC'));
 
         foreach ($groupList['items'] as $group) {
             $thisGroup = array('title' => $group->getTitle());
-            $projects = b8\Store\Factory::getStore('Project')->getByGroupId($group->getId());
+            $projects = $this->projectRepository->findByGroup($group);
             $thisGroup['projects'] = $projects['items'];
             $groups[] = $thisGroup;
         }

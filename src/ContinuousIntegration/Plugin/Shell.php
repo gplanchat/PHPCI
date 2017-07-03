@@ -11,7 +11,7 @@ namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use Kiboko\Component\ContinuousIntegration\Builder;
 use Kiboko\Component\ContinuousIntegration\Helper\Lang;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
  * Shell Plugin - Allows execute shell commands.
@@ -22,12 +22,12 @@ use Kiboko\Component\ContinuousIntegration\Model\Build;
 class Shell implements \Kiboko\Component\ContinuousIntegration\Plugin
 {
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Builder
+     * @var Builder
      */
     protected $phpci;
 
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Model\Build
+     * @var Build
      */
     protected $build;
 

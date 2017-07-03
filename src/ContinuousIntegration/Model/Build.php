@@ -7,16 +7,16 @@
  * @link         https://www.phptesting.org/
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity;
 
 use b8\Store\Factory;
-use Kiboko\Component\ContinuousIntegration\Model\Base\BuildBase;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Base\BuildBase;
 use Kiboko\Component\ContinuousIntegration\Builder;
 use Symfony\Component\Yaml\Parser as YamlParser;
 
 /**
 * Build Model
-* @uses         PHPCI\Model\Base\BuildBase
+* @uses         BuildBase
 * @author       Dan Cryer <dan@block8.co.uk>
 * @package      PHPCI
 * @subpackage   Core

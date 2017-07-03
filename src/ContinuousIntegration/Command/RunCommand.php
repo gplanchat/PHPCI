@@ -21,7 +21,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use b8\Store\Factory;
 use Kiboko\Component\ContinuousIntegration\Builder;
 use Kiboko\Component\ContinuousIntegration\BuildFactory;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
 * Run console command - Runs any pending builds.
@@ -161,7 +161,7 @@ class RunCommand extends Command
         $timeout = Config::getInstance()->get('phpci.build.failed_after', 1800);
 
         foreach ($running['items'] as $build) {
-            /** @var \Kiboko\Component\ContinuousIntegration\Model\Build $build */
+            /** @var \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build $build */
             $build = BuildFactory::getBuild($build);
 
             $now = time();

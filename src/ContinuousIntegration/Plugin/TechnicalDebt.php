@@ -11,7 +11,7 @@ namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use Kiboko\Component\ContinuousIntegration;
 use Kiboko\Component\ContinuousIntegration\Builder;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
 * Technical Debt Plugin - Checks for existence of "TODO", "FIXME", etc.
@@ -20,7 +20,7 @@ use Kiboko\Component\ContinuousIntegration\Model\Build;
 * @package      PHPCI
 * @subpackage   Plugins
 */
-class TechnicalDebt implements Kiboko\Component\ContinuousIntegration\Plugin, Kiboko\Component\ContinuousIntegration\ZeroConfigPlugin
+class TechnicalDebt implements ContinuousIntegration\Plugin, ContinuousIntegration\ZeroConfigPlugin
 {
     /**
      * @var \Kiboko\Component\ContinuousIntegration\Builder
@@ -194,7 +194,7 @@ class TechnicalDebt implements Kiboko\Component\ContinuousIntegration\Plugin, Ki
                         $this->phpci,
                         'technical_debt',
                         $content,
-                        Kiboko\Component\ContinuousIntegration\Model\BuildError::SEVERITY_LOW,
+                        Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildError::SEVERITY_LOW,
                         $fileName,
                         $lineNumber
                     );

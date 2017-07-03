@@ -15,8 +15,8 @@ use b8\Http\Response\JsonResponse;
 use Kiboko\Component\ContinuousIntegration\BuildFactory;
 use Kiboko\Component\ContinuousIntegration\Helper\AnsiConverter;
 use Kiboko\Component\ContinuousIntegration\Helper\Lang;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
-use Kiboko\Component\ContinuousIntegration\Model\Project;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Project;
 use Kiboko\Component\ContinuousIntegration\Service\BuildService;
 
 /**

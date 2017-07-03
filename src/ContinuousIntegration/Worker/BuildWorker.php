@@ -5,38 +5,42 @@ namespace Kiboko\Component\ContinuousIntegration\Worker;
 use b8\Config;
 use b8\Database;
 use b8\Store\Factory;
-use Monolog\Logger;
 use Pheanstalk\Job;
-use Pheanstalk\Pheanstalk;
 use Kiboko\Component\ContinuousIntegration\Builder;
 use Kiboko\Component\ContinuousIntegration\BuildFactory;
 use Kiboko\Component\ContinuousIntegration\Logging\BuildDBLogHandler;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Worker\WorkerInterface;
+use Pheanstalk\PheanstalkInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 
-/**
- * Class BuildWorker
- * @package PHPCI\Worker
- */
-class BuildWorker
+class BuildWorker implements WorkerInterface, LoggerAwareInterface
 {
     /**
-     * If this variable changes to false, the worker will stop after the current build.
      * @var bool
      */
-    protected $run = true;
+    private $shouldStop;
 
     /**
-     * The maximum number of jobs this worker should run before exiting.
-     * Use -1 for no limit.
      * @var int
      */
-    protected $maxJobs = -1;
+    private $maximumJobs;
 
     /**
-     * The logger for builds to use.
-     * @var \Monolog\Logger
+     * @var int
      */
-    protected $logger;
+    private $totalJobs;
+
+    /**
+     * @var PheanstalkInterface
+     */
+    private $pheanstalk;
+
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * beanstalkd host
@@ -49,16 +53,6 @@ class BuildWorker
      * @var string
      */
     protected $queue;
-
-    /**
-     * @var \Pheanstalk\Pheanstalk
-     */
-    protected $pheanstalk;
-
-    /**
-     * @var int
-     */
-    protected $totalJobs = 0;
 
     /**
      * @param $host
@@ -80,14 +74,6 @@ class BuildWorker
     }
 
     /**
-     * @param Logger $logger
-     */
-    public function setLogger(Logger $logger)
-    {
-        $this->logger = $logger;
-    }
-
-    /**
      * Start the worker.
      */
     public function startWorker()
@@ -96,8 +82,8 @@ class BuildWorker
         $this->pheanstalk->ignore('default');
         $buildStore = Factory::getStore('Build');
 
-        while ($this->run) {
-            // Get a job from the queue:
+        while ($this->shouldStop !== true) {
+            /** @var Job $job */
             $job = $this->pheanstalk->reserve();
 
             $this->checkJobLimit();
@@ -105,7 +91,7 @@ class BuildWorker
             // Get the job data and run the job:
             $jobData = json_decode($job->getData(), true);
 
-            if (!$this->verifyJob($job, $jobData)) {
+            if (!$this->validateJob($job, $jobData)) {
                 continue;
             }
 
@@ -130,7 +116,7 @@ class BuildWorker
             try {
                 // Logging relevant to this build should be stored
                 // against the build itself.
-                $buildDbLog = new BuildDBLogHandler($build, Logger::INFO);
+                $buildDbLog = new BuildDBLogHandler($build, LogLevel::INFO);
                 $this->logger->pushHandler($buildDbLog);
 
                 $builder = new Builder($build, $this->logger);
@@ -163,17 +149,13 @@ class BuildWorker
         }
     }
 
-    /**
-     * Stops the worker after the current build.
-     */
-    public function stopWorker()
+    public function stop(): void
     {
-        $this->run = false;
+        $this->shouldStop = true;
     }
 
     /**
-     * Checks if this worker has done the amount of jobs it is allowed to do, and if so tells it to stop
-     * after this job completes.
+     * @return LoggerInterface
      */
     protected function checkJobLimit()
     {
@@ -191,20 +173,38 @@ class BuildWorker
      * @param $jobData
      * @return bool
      */
-    protected function verifyJob(Job $job, $jobData)
+    protected function validateJob(Job $job, array $jobData)
     {
-        if (empty($jobData) || !is_array($jobData)) {
-            // Probably not from PHPCI.
+        if (empty($jobData)) {
             $this->pheanstalk->delete($job);
             return false;
         }
 
-        if (!array_key_exists('type', $jobData) || $jobData['type'] !== 'phpci.build') {
-            // Probably not from PHPCI.
+        if (!isset('type', $jobData) || $jobData['type'] !== 'phpci.build') {
             $this->pheanstalk->delete($job);
             return false;
         }
 
         return true;
+    }
+
+    /**
+     * @return LoggerInterface
+     */
+    public function getLogger(): LoggerInterface
+    {
+        return $this->logger;
+    }
+
+    /**
+     * @param LoggerInterface $logger
+     *
+     * @return WorkerInterface
+     */
+    public function setLogger(LoggerInterface $logger): WorkerInterface
+    {
+        $this->logger = $logger;
+
+        return $this;
     }
 }

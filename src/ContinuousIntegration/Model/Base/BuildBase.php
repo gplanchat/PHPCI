@@ -4,9 +4,9 @@
  * Build base model for table: build
  */
 
-namespace Kiboko\Component\ContinuousIntegration\Model\Base;
+namespace Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Base;
 
-use Kiboko\Component\ContinuousIntegration\Model;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity;
 use b8\Store\Factory;
 
 /**
@@ -598,7 +598,7 @@ class BuildBase extends Model
     public function setProject($value)
     {
         // Is this an instance of Project?
-        if ($value instanceof \Kiboko\Component\ContinuousIntegration\Model\Project) {
+        if ($value instanceof Entity\Project) {
             return $this->setProjectObject($value);
         }
 
@@ -614,9 +614,9 @@ class BuildBase extends Model
     /**
     * Set Project - Accepts a Project model.
     *
-    * @param $value \PHPCI\Model\Project
+    * @param $value Entity\Project
     */
-    public function setProjectObject(\Kiboko\Component\ContinuousIntegration\Model\Project $value)
+    public function setProjectObject(Entity\Project $value)
     {
         return $this->setProjectId($value->getId());
     }
@@ -625,8 +625,8 @@ class BuildBase extends Model
      * Get BuildError models by BuildId for this Build.
      *
      * @uses \Kiboko\Component\ContinuousIntegration\Store\BuildErrorStore::getByBuildId()
-     * @uses \Kiboko\Component\ContinuousIntegration\Model\BuildError
-     * @return \Kiboko\Component\ContinuousIntegration\Model\BuildError[]
+     * @uses Entity\BuildError
+     * @return Entity\BuildError[]
      */
     public function getBuildBuildErrors()
     {
@@ -637,8 +637,8 @@ class BuildBase extends Model
      * Get BuildMeta models by BuildId for this Build.
      *
      * @uses \Kiboko\Component\ContinuousIntegration\Store\BuildMetaStore::getByBuildId()
-     * @uses \Kiboko\Component\ContinuousIntegration\Model\BuildMeta
-     * @return \Kiboko\Component\ContinuousIntegration\Model\BuildMeta[]
+     * @uses Entity\BuildMeta
+     * @return Entity\BuildMeta[]
      */
     public function getBuildBuildMetas()
     {

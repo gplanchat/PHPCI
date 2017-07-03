@@ -9,7 +9,7 @@
 
 namespace Kiboko\Component\ContinuousIntegration\Logging;
 
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
  * Class LoggedBuildContextTidier cleans up build log entries.

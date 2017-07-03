@@ -11,8 +11,8 @@ namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use Kiboko\Component\ContinuousIntegration\Builder;
 use Kiboko\Component\ContinuousIntegration\Helper\Lang;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
-use Kiboko\Component\ContinuousIntegration\Model\BuildError;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildError;
 
 /**
 * PHP Copy / Paste Detector - Allows PHP Copy / Paste Detector testing.

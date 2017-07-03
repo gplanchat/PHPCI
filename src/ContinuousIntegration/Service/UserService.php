@@ -9,7 +9,7 @@
 
 namespace Kiboko\Component\ContinuousIntegration\Service;
 
-use Kiboko\Component\ContinuousIntegration\Model\User;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\User;
 use Kiboko\Component\ContinuousIntegration\Store\UserStore;
 
 /**

@@ -6,7 +6,7 @@ use b8\Store\Factory as StoreFactory;
 use Exception;
 use Kiboko\Component\ContinuousIntegration\Helper\Lang;
 use Kiboko\Component\ContinuousIntegration\Logging\BuildLogger;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 use Kiboko\Component\ContinuousIntegration\Store\BuildStore;
 
 /**
@@ -77,7 +77,7 @@ class Executor
      */
     protected function getBranchSpecificPlugins(&$config, $stage, $pluginsToExecute)
     {
-        /** @var \Kiboko\Component\ContinuousIntegration\Model\Build $build */
+        /** @var \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build $build */
         $build = $this->pluginFactory->getResourceFor('Kiboko\\Component\\ContinuousIntegration\\Model\\Build');
         $branch = $build->getBranch();
 

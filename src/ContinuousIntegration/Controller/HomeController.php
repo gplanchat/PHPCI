@@ -13,7 +13,7 @@ use b8;
 use Kiboko\Component\ContinuousIntegration;
 use Kiboko\Component\ContinuousIntegration\BuildFactory;
 use Kiboko\Component\ContinuousIntegration\Helper\Lang;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
 * Home Controller - Displays the Kiboko CI Dashboard.

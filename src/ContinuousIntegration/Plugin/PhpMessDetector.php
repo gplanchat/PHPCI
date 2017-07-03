@@ -11,7 +11,7 @@ namespace Kiboko\Component\ContinuousIntegration\Plugin;
 
 use Kiboko\Component\ContinuousIntegration;
 use Kiboko\Component\ContinuousIntegration\Builder;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 
 /**
 * PHP Mess Detector Plugin - Allows PHP Mess Detector testing.
@@ -19,7 +19,7 @@ use Kiboko\Component\ContinuousIntegration\Model\Build;
 * @package      PHPCI
 * @subpackage   Plugins
 */
-class PhpMessDetector implements Kiboko\Component\ContinuousIntegration\Plugin, Kiboko\Component\ContinuousIntegration\ZeroConfigPlugin
+class PhpMessDetector implements ContinuousIntegration\Plugin, ContinuousIntegration\ZeroConfigPlugin
 {
     /**
      * @var \Kiboko\Component\ContinuousIntegration\Builder
@@ -27,7 +27,7 @@ class PhpMessDetector implements Kiboko\Component\ContinuousIntegration\Plugin, 
     protected $phpci;
 
     /**
-     * @var \Kiboko\Component\ContinuousIntegration\Model\Build
+     * @var \Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build
      */
     protected $build;
 
@@ -169,7 +169,7 @@ class PhpMessDetector implements Kiboko\Component\ContinuousIntegration\Plugin, 
                     $this->phpci,
                     'php_mess_detector',
                     (string)$violation,
-                    Kiboko\Component\ContinuousIntegration\Model\BuildError::SEVERITY_HIGH,
+                    Kiboko\Bundle\ContinuousIntegrationBundle\Entity\BuildError::SEVERITY_HIGH,
                     $fileName,
                     (int)$violation['beginline'],
                     (int)$violation['endline']

@@ -13,8 +13,8 @@ use b8;
 use b8\Exception\HttpException\NotFoundException;
 use b8\Store;
 use Kiboko\Component\ContinuousIntegration\BuildFactory;
-use Kiboko\Component\ContinuousIntegration\Model\Project;
-use Kiboko\Component\ContinuousIntegration\Model\Build;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Project;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Build;
 use Kiboko\Component\ContinuousIntegration\Service\BuildStatusService;
 
 /**

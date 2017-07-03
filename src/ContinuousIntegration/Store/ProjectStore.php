@@ -10,7 +10,7 @@
 namespace Kiboko\Component\ContinuousIntegration\Store;
 
 use b8\Database;
-use Kiboko\Component\ContinuousIntegration\Model\Project;
+use Kiboko\Bundle\ContinuousIntegrationBundle\Entity\Project;
 use Kiboko\Component\ContinuousIntegration\Store\Base\ProjectStoreBase;
 
 /**
