@@ -36,54 +36,71 @@ class ProcessManager implements \Countable
     {
         $this->maxProcesses = max($maxProcesses, 1);
         $this->pollTime = $pollTime;
-        $this->pendingProcesses = [];
-        $this->currentProcesses = [];
+        $this->pendingProcesses = new \SplObjectStorage();
+        $this->currentProcesses = new \SplObjectStorage();
     }
 
     /**
      * @param Process $process
+     * @param callable|null $callback
      *
      * @return ProcessManager
      */
-    public function enqueue(Process $process): ProcessManager
+    public function enqueue(Process $process, ?callable $callback = null): ProcessManager
     {
-        $this->pendingProcesses[] = $process;
+        $this->pendingProcesses->attach($process, $callback);
 
         return $this;
     }
 
-    public function run(callable $callback): ProcessManager
+    public function run(callable $loopController): ProcessManager
     {
         do {
-            $processesToStart = $this->maxProcesses - count($this->currentProcesses);
+            $processesToStart = $this->maxProcesses - $this->currentProcesses->count();
             if ($processesToStart > 0) {
-                $newProcesses = array_splice($this->pendingProcesses, 0, $processesToStart);
+                $newProcesses = new \SplObjectStorage();
+                foreach ($this->pendingProcesses as $process) {
+                    $callback = $this->pendingProcesses->offsetGet($process);
+                    $this->pendingProcesses->detach($process);
+
+                    $newProcesses->attach($process, $callback);
+
+                    if (--$processesToStart <= 0) {
+                        break;
+                    }
+                }
                 $this->startProcesses($newProcesses);
 
                 /** @var Process[] $activeProcesses */
-                array_push($this->currentProcesses, ...$newProcesses);
+                $this->currentProcesses->addAll($newProcesses);
             }
 
             usleep($this->pollTime);
 
             $stoppedProcesses = [];
-            foreach ($this->currentProcesses as $index => $process) {
+            foreach ($this->currentProcesses as $process) {
                 if ($process->isRunning()) {
                     continue;
                 }
 
+                $callback = $this->currentProcesses->offsetGet($process);
+                $this->currentProcesses->detach($process);
+
+                if ($callback !== null) {
+                    $callback($this, $process);
+                }
+
                 $stoppedProcesses[] = $process;
-                unset($this->currentProcesses[$index]);
             }
-        } while ($callback($this, $stoppedProcesses));
+        } while ($loopController($this, $stoppedProcesses));
 
         return $this;
     }
 
     /**
-     * @param Process[] $processes
+     * @param Process[]|\Traversable $processes
      */
-    private function startProcesses(array $processes)
+    private function startProcesses(\Traversable $processes)
     {
         foreach ($processes as $process) {
             $process->start();
