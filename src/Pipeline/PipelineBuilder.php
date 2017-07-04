@@ -2,15 +2,29 @@
 
 namespace Kiboko\Component\Pipeline;
 
-use Kiboko\Component\Pipeline\Processor\FingersCrossedProcessor;
 use Kiboko\Component\Pipeline\Processor\ProcessorInterface;
 
 class PipelineBuilder implements PipelineBuilderInterface
 {
     /**
+     * @var ForkGroupInterface
+     */
+    private $forkGroup;
+
+    /**
      * @var StepInterface[]
      */
     private $steps = [];
+
+    /**
+     * PipelineBuilder constructor.
+     *
+     * @param ForkablePipelineInterface|null $parentPipeline
+     */
+    public function __construct(?ForkablePipelineInterface $parentPipeline = null)
+    {
+        $this->forkGroup = new ForkGroup($parentPipeline);
+    }
 
     /**
      * Add an stage.
@@ -37,6 +51,6 @@ class PipelineBuilder implements PipelineBuilderInterface
      */
     public function build(ProcessorInterface $processor = null): PipelineInterface
     {
-        return new Pipeline($this->steps, $processor ?: new FingersCrossedProcessor());
+        return new Pipeline($this->steps, $this->parentPipeline);
     }
 }

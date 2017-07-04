@@ -6,7 +6,7 @@ use InvalidArgumentException;
 use Kiboko\Component\Pipeline\ExecutionContext\ExecutionContextInterface;
 use Kiboko\Component\Pipeline\Processor\ProcessorInterface;
 
-class Pipeline implements PipelineInterface
+class Pipeline implements ForkablePipelineInterface
 {
     /**
      * @var StepInterface[]
@@ -14,14 +14,22 @@ class Pipeline implements PipelineInterface
     private $steps = [];
 
     /**
+     * @var ForkGroupInterface
+     */
+    private $group;
+
+    /**
      * Constructor.
      *
-     * @param StageInterface[] $steps
+     * @param StepInterface[] $steps
+     * @param ForkGroupInterface $group
      *
      * @throws InvalidArgumentException
      */
-    public function __construct(array $steps = [])
-    {
+    public function __construct(
+        array $steps = [],
+        ?ForkGroupInterface $group = null
+    ) {
         foreach ($steps as $step) {
             if (!$step instanceof StepInterface) {
                 throw new InvalidArgumentException(sprintf('All steps should implement %s.', StepInterface::class));
@@ -29,6 +37,7 @@ class Pipeline implements PipelineInterface
         }
 
         $this->steps = $steps;
+        $this->group = $group;
     }
 
     /**
@@ -53,5 +62,21 @@ class Pipeline implements PipelineInterface
         ProcessorInterface $processor
     ): PipelineExecutionInterface {
         return $processor->process($this->steps, $executionContext);
+    }
+
+    /**
+     * @return PipelineBuilderInterface
+     */
+    public function forkBuilder(): PipelineBuilderInterface
+    {
+        return new PipelineBuilder($this);
+    }
+
+    /**
+     * @return ForkGroupInterface
+     */
+    public function getGroup(): ForkGroupInterface
+    {
+        return $this->group;
     }
 }
