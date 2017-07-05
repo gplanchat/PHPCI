@@ -29,11 +29,11 @@ class ForkGroup implements ForkGroupInterface
     }
 
     /**
-     * @param PipelineInterface[] ...$pipelines
+     * @param ForkablePipelineInterface[] ...$pipelines
      *
      * @return ForkGroupInterface
      */
-    public function push(PipelineInterface ...$pipelines): ForkGroupInterface
+    public function push(ForkablePipelineInterface ...$pipelines): ForkGroupInterface
     {
         array_push($this->childPipelines, ...$pipelines);
 
@@ -41,10 +41,16 @@ class ForkGroup implements ForkGroupInterface
     }
 
     /**
+     * @param ForkablePipelineInterface[] $pipelines
+     *
      * @return bool
      */
-    public function wait(): bool
+    public function wait(ForkablePipelineInterface ...$pipelines): bool
     {
-        // TODO
+        foreach ($pipelines as $pipeline) {
+            if ($pipeline->getGroup() !== $this) {
+                throw new \RuntimeException('Those pipelines cold not be awaited by this fork group.');
+            }
+        }
     }
 }

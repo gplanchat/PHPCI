@@ -2,7 +2,6 @@
 
 namespace Kiboko\Component\Pipeline;
 
-interface PipelineExecutionInterface
+interface PipelineExecutionInterface extends \Iterator, \Countable
 {
-
 }
