@@ -24,12 +24,14 @@
 
     "autoload": {
         "psr-4": {
+            "Kiboko\\Component\\Pipeline\\": "src/Pipeline",
             "PHPCI\\": "PHPCI"
         }
     },
 
     "autoload-dev": {
         "psr-4": {
+            "spec\\Kiboko\\Component\\Pipeline\\": "src/Pipeline/spec",
             "Tests\\PHPCI\\": "Tests/PHPCI/"
         }
     },
@@ -51,7 +53,8 @@
         "pda/pheanstalk": "~3.1",
         "maknz/slack": "~1.7",
         "hipchat/hipchat-php": "~1.4",
-        "mremi/flowdock": "~1.0"
+        "mremi/flowdock": "~1.0",
+        "symfony/process": "^3.3"
     },
 
     "require-dev": {
@@ -60,7 +63,8 @@
         "squizlabs/php_codesniffer": "~2.3",
         "block8/php-docblock-checker": "~1.0",
         "phploc/phploc": "~2.0",
-        "jakub-onderka/php-parallel-lint": "0.8.*"
+        "jakub-onderka/php-parallel-lint": "0.8.*",
+        "phpspec/phpspec": "^3.4"
     },
 
     "suggest": {
